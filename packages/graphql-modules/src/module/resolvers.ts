@@ -240,14 +240,6 @@ function addInterfaceOrUnion({
     );
   }
 
-  if (Object.keys(fields).length > 1) {
-    throw new ResolverInvalidError(
-      `Invalid resolver of "${typeName}" union or interface`,
-      `Only __resolveType is allowed`,
-      useLocation({ dirname: config.dirname, id: config.id })
-    );
-  }
-
   writeResolverMetadata(fields.__resolveType, config);
   container[typeName] = {
     __resolveType: fields.__resolveType,
